@@ -1,3 +1,3 @@
-docker stop docker-flask;
-docker image  build -t docker-flask . ;
-docker run -p 5555:5555 -d docker-flask;
+docker stop stock-flask;
+docker build . -t stock-flask ;
+docker run -p 5050:5050 -d --name stock-flask stock-flask;

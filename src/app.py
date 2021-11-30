@@ -14,7 +14,7 @@ def home():
         return jsonify({'info':q['info'],'priceInfo':q['priceInfo']})
 
 
-@app.route('/<stock>',methods = ['GET'])
+@app.route('/stocks/<stock>',methods = ['GET'])
 def home2(stock="ITC"):
     n = NSELive()
     q = n.stock_quote(stock)
@@ -52,5 +52,5 @@ def derivatives(index="NIFTY"):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1000)
+    app.run(host='0.0.0.0', port=5050)
 

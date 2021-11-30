@@ -1,8 +1,10 @@
-FROM python:3.8
-RUN apt-get update && apt-get install -y python3 python3-pip
+FROM python:3.8-alpine
+RUN apk add --update py-pip
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
 WORKDIR /app
-ADD . /app
-RUN export FLASK_APP=stock_flask.py
-RUN pip3 install -r requirements.txt
+COPY ./src /app
+RUN export FLASK_APP=app.py
 EXPOSE 5555
-CMD [ "flask","run", "--host=0.0.0.0","--port=5555"]
+CMD [ "flask","run", "--host=0.0.0.0","--port=5050"]
