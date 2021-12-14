@@ -1,5 +1,4 @@
 docker stop stock-flask;
-export FLASK_APP=src/app.py;
-export FLASK_ENV=development;
+docker container prune;
 docker build . -t stock-flask ;
-docker run -p 5050:5050 -d --name stock-flask stock-flask;
+docker run -p 5050:5050 --name stock-flask stock-flask;
