@@ -6,5 +6,5 @@ RUN pip install -r requirements.txt
 WORKDIR /app
 COPY ./src /app
 RUN export FLASK_APP=app.py
-EXPOSE 5555
 CMD [ "flask","run", "--host=0.0.0.0","--port=5050"]
+EXPOSE 5050
