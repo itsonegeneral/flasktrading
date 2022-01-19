@@ -19,10 +19,20 @@ def home2(stock="ITC"):
     n = NSELive()
     q = n.stock_quote(stock)
     if request.method == 'GET':
-        return jsonify({'info':q['info'],'priceInfo':q['priceInfo']})
+        try:
+            return jsonify({'info':q['info'],'priceInfo':q['priceInfo']})
+        except:
+            return jsonify({'message':'Not Found'})
 
 
-    
+@app.route('/stocks/tick/<stock>',methods = ['GET'])
+def tickData(stock="ITC"):
+    print("tickdata " + stock)
+    n = NSELive()
+    if request.method == 'GET':
+        q = n.tick_data(stock)
+        return jsonify(q)
+       #return jsonify({'info':q['info'],'priceInfo':q['priceInfo']})
 
 @app.route('/markets/all-markets',methods=['GET'])
 def getMarketState():
@@ -49,6 +59,11 @@ def derivatives(index="NIFTY"):
     if request.method == 'GET':
         data = "hello"
         return jsonify({'data': q})
+
+
+@app.errorhandler(404)
+def internal_error(error):
+    return "Not Found"
 
 
 if __name__ == '__main__':
