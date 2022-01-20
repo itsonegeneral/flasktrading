@@ -13,4 +13,4 @@ services:
     depends_on:
       - src
     ports:
-      - "80:80"
+      - "5050:5050"
