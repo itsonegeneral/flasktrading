@@ -4,8 +4,8 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 WORKDIR /app
-COPY ./src /app
-RUN set FLASK_APP=src/app.py
+COPY . /app
+RUN set FLASK_APP=app.py
 RUN export FLASK_ENV=development
 EXPOSE 5050
 CMD [ "python","app.py"]

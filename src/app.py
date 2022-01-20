@@ -1,7 +1,8 @@
+from crypt import methods
 from flask import Flask,jsonify, request
 from flask.json import load
 from jugaad_data.nse import NSELive
-
+import socket
 
 app = Flask(__name__)
 
@@ -60,6 +61,10 @@ def derivatives(index="NIFTY"):
         data = "hello"
         return jsonify({'data': q})
 
+
+@app.route('/loadcheck',methods=['GET'])
+def checkLoadBalancing():
+    return f"Container ID : {socket.gethostname()}"
 
 @app.errorhandler(404)
 def internal_error(error):
