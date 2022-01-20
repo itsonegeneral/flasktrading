@@ -1,1 +1,1 @@
-docker-compose up -d --build --scale src=7
+docker-compose up -d --build --scale src=1
